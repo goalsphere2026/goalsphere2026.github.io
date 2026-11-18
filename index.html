@@ -8,6 +8,230 @@
 
 <meta charset="UTF-8">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>GoalSphere - Football News</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#0b1220;color:#fff;font-family:Arial,sans-serif}
+
+header{background:#07101d;padding:24px 15px;text-align:center;border-bottom:3px solid #19c37d}
+
+.logo{font-size:34px;font-weight:bold;color:#19c37d}
+
+header p{color:#b9c5d5}
+
+nav{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;background:#172438;padding:16px}
+
+nav a{color:white;text-decoration:none}
+
+button{background:#19c37d;color:#07101d;border:0;border-radius:8px;padding:11px 18px;font-weight:bold;cursor:pointer}
+
+.hero{text-align:center;padding:45px 15px;background:linear-gradient(135deg,#124c3b,#101827)}
+
+.hero h1{font-size:30px}
+
+.container{max-width:1000px;margin:auto;padding:20px}
+
+.section-title{border-right:4px solid #19c37d;padding-right:12px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+
+.card{background:#19263a;border-radius:12px;padding:20px;line-height:1.8}
+
+.card h3{color:#19c37d}
+
+.tag{color:#19c37d;font-size:13px}
+
+.card a{color:#19c37d;text-decoration:none}
+
+footer{text-align:center;padding:25px;background:#07101d;color:#aab5c4;margin-top:35px}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">⚽ GoalSphere</div>
+
+<p id="subtitle">عالم كرة القدم بين يديك</p>
+
+<button onclick="changeLanguage()" id="languageButton">English</button>
+
+</header>
+
+<nav>
+
+<a href="#news" id="navNews">آخر الأخبار</a>
+
+<a href="#transfers" id="navTransfers">الانتقالات</a>
+
+<a href="#leagues" id="navLeagues">الدوريات</a>
+
+</nav>
+
+<section class="hero">
+
+<h1 id="heroTitle">كل أخبار كرة القدم في مكان واحد</h1>
+
+<p id="heroText">أخبار الأندية واللاعبين والبطولات العالمية</p>
+
+</section>
+
+<main class="container">
+
+<h2 class="section-title" id="latestTitle">📰 آخر الأخبار</h2>
+
+<div class="cards">
+
+<article class="card">
+
+<span class="tag" id="tag1">ريال مدريد | 18 نوفمبر 2026</span>
+
+<h3 id="title1">ريال مدريد يمدد عقد أردا غولر حتى 2032</h3>
+
+<p id="text1">أعلن ريال مدريد رسمياً تمديد عقد لاعب الوسط التركي أردا غولر حتى 30 يونيو 2032، ليؤكد النادي اعتماده عليه ضمن خططه للمستقبل.</p>
+
+<a href="https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-renovacion-arda-guler-18-11-2026" target="_blank" id="source1">المصدر الرسمي</a>
+
+</article>
+
+<article class="card">
+
+<span class="tag" id="tag2">مانشستر يونايتد | 18 نوفمبر 2026</span>
+
+<h3 id="title2">بوكيتينو يبدأ مهمته مدرباً لمانشستر يونايتد</h3>
+
+<p id="text2">أكد مانشستر يونايتد أن المدرب الأرجنتيني ماوريسيو بوكيتينو سيتولى تدريب الفريق الأول للرجال ابتداءً من 18 نوفمبر 2026.</p>
+
+<a href="https://www.manutd.com/en/news/mauricio-pochettino-agrees-to-become-united-head-coach" target="_blank" id="source2">المصدر الرسمي</a>
+
+</article>
+
+</div>
+
+<h2 class="section-title" id="transfers">🔄 الانتقالات</h2>
+
+<div class="card" id="transferText">تابع هنا آخر أخبار انتقالات اللاعبين والصفقات الرسمية.</div>
+
+<h2 class="section-title" id="leagues">🏆 الدوريات العالمية</h2>
+
+<div class="cards">
+
+<div class="card">🏴 الدوري الإنجليزي</div>
+
+<div class="card">🇪🇸 الدوري الإسباني</div>
+
+<div class="card">🇮🇹 الدوري الإيطالي</div>
+
+<div class="card">🇩🇪 الدوري الألماني</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<strong>GoalSphere</strong>
+
+<p>Football. Everywhere.</p>
+
+<p>© 2026 GoalSphere</p>
+
+</footer>
+
+<script>
+
+let english=false;
+
+function changeLanguage(){
+
+english=!english;
+
+document.documentElement.lang=english?'en':'ar';
+
+document.documentElement.dir=english?'ltr':'rtl';
+
+const words={
+
+subtitle:['عالم كرة القدم بين يديك','Football world at your fingertips'],
+
+languageButton:['English','العربية'],
+
+navNews:['آخر الأخبار','Latest News'],
+
+navTransfers:['الانتقالات','Transfers'],
+
+navLeagues:['الدوريات','Leagues'],
+
+heroTitle:['كل أخبار كرة القدم في مكان واحد','All football news in one place'],
+
+heroText:['أخبار الأندية واللاعبين والبطولات العالمية','Club, player and international football news'],
+
+latestTitle:['📰 آخر الأخبار','📰 Latest News'],
+
+tag1:['ريال مدريد | 18 نوفمبر 2026','Real Madrid | November 18, 2026'],
+
+title1:['ريال مدريد يمدد عقد أردا غولر حتى 2032','Real Madrid extend Arda Güler contract until 2032'],
+
+text1:['أعلن ريال مدريد رسمياً تمديد عقد لاعب الوسط التركي أردا غولر حتى 30 يونيو 2032، ليؤكد النادي اعتماده عليه ضمن خططه للمستقبل.','Real Madrid have officially extended Turkish midfielder Arda Güler’s contract until June 30, 2032, confirming his place in the club’s long-term plans.'],
+
+source1:['المصدر الرسمي','Official source'],
+
+tag2:['مانشستر يونايتد | 18 نوفمبر 2026','Manchester United | November 18, 2026'],
+
+title2:['بوكيتينو يبدأ مهمته مدرباً لمانشستر يونايتد','Pochettino begins his role as Manchester United head coach'],
+
+text2:['أكد مانشستر يونايتد أن المدرب الأرجنتيني ماوريسيو بوكيتينو سيتولى تدريب الفريق الأول للرجال ابتداءً من 18 نوفمبر 2026.','Manchester United confirmed that Argentine coach Mauricio Pochettino will take charge of the men’s first team from November 18, 2026.'],
+
+source2:['المصدر الرسمي','Official source'],
+
+transferText:['تابع هنا آخر أخبار انتقالات اللاعبين والصفقات الرسمية.','Follow the latest player transfer news and confirmed deals.']
+
+};
+
+for(const id in words){
+
+document.getElementById(id).textContent=english?words[id][1]:words[id][0];
+
+}
+
+document.getElementById('transfers').textContent=english?'🔄 Transfers':'🔄 الانتقالات';
+
+document.querySelectorAll('.cards .card').forEach((el,i)=>{
+
+if(i>=2)el.textContent=english?
+
+['🏴 English Premier League','🇪🇸 Spanish La Liga','🇮🇹 Italian Serie A','🇩🇪 German Bundesliga'][i-2]:
+
+['🏴 الدوري الإنجليزي','🇪🇸 الدوري الإسباني','🇮🇹 الدوري الإيطالي','🇩🇪 الدوري الألماني'][i-2];
+
+});
+
+document.querySelectorAll('#navLeagues').forEach(el=>el.textContent=english?'Leagues':'الدوريات');
+
+}
+
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>GoalSphere | عالم كرة القدم</title>
