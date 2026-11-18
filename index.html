@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>GoalSphere | عالم كرة القدم</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07111f;color:#f5f7fb;font-family:Arial,sans-serif}
+header{padding:25px 18px;background:linear-gradient(130deg,#102b48,#07111f);border-bottom:1px solid #20364e}
+.top{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:29px;font-weight:900;color:#35d39a}
+.logo span{color:white}
+button{background:#35d39a;color:#07111f;border:0;border-radius:9px;padding:10px 16px;font-weight:bold;cursor:pointer}
+.hero{max-width:1100px;margin:28px auto;padding:0 16px}
+.hero h1{font-size:30px;margin-bottom:8px}
+.hero p{color:#aab9ca;line-height:1.7}
+.tag{display:inline-block;background:#163d38;color:#6fffc3;padding:6px 10px;border-radius:20px;font-size:12px}
+main{max-width:1100px;margin:25px auto;padding:0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:17px}
+.card{background:#101f30;border:1px solid #20364e;border-radius:15px;padding:19px;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:#35d39a}
+.emoji{font-size:32px;margin-bottom:12px}
+.category{font-size:12px;color:#35d39a;font-weight:bold}
+.card h2{font-size:19px;line-height:1.5;margin:10px 0}
+.card p{color:#b5c2d0;font-size:14px;line-height:1.8}
+.card a{display:inline-block;color:#35d39a;text-decoration:none;font-weight:bold;margin-top:8px}
+footer{text-align:center;color:#8193a8;padding:30px 15px;font-size:13px}
+.notice{background:#182b3c;border-radius:12px;padding:14px;color:#c5d2df;font-size:13px;line-height:1.8;margin:20px 0}
+[dir="ltr"] .card{text-align:left}
+@media(max-width:500px){.hero h1{font-size:25px}.logo{font-size:24px}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="top">
+  <div class="logo">Goal<span>Sphere</span> ⚽</div>
+  <button onclick="toggleLanguage()" id="langBtn">English</button>
+ </div>
+</header>
+
+<section class="hero">
+ <span class="tag" id="edition">نشرة 18 نوفمبر 2026</span>
+ <h1 id="headline">كل أخبار كرة القدم في مكان واحد</h1>
+ <p id="intro">تابع أخبار الأندية واللاعبين والبطولات العالمية من GoalSphere.</p>
+</section>
+
+<main>
+ <div class="notice" id="notice">
+  📰 هذه نشرة تجريبية بتاريخ 18 نوفمبر 2026. اضغط على «اقرأ المصدر» للوصول إلى الخبر الأصلي.
+ </div>
+ <div class="grid" id="news"></div>
+</main>
+
+<footer>
+ © 2026 GoalSphere — Football Around The World 🌍
+</footer>
+
+<script>
+const articles = [
+{
+ emoji:"🔴",
+ category:"الدوري الإنجليزي | Premier League",
+ ar:"بوتشيتينو يصل إلى مانشستر يونايتد لبدء مهمته",
+ en:"Pochettino arrives to begin his Manchester United job",
+ descAr:"وصل المدرب الأرجنتيني ماوريسيو بوتشيتينو إلى مانشستر لبدء مهمته مع يونايتد قبل مواجهة ليفربول.",
+ descEn:"Mauricio Pochettino has arrived in Manchester to begin his new role before United face Liverpool.",
+ url:"https://www.reuters.com/sports/soccer/pochettino-arrives-manchester-braced-relegation-cauldron-2026-11-18/"
+},
+{
+ emoji:"🇹🇷",
+ category:"الدوري الإسباني | LaLiga",
+ ar:"ريال مدريد يمدد عقد أردا غولر حتى عام 2032",
+ en:"Real Madrid extend Arda Güler's contract until 2032",
+ descAr:"أعلن ريال مدريد رسمياً تمديد عقد اللاعب التركي أردا غولر حتى 30 يونيو 2032.",
+ descEn:"Real Madrid have officially extended the Turkish midfielder's contract until June 30, 2032.",
+ url:"https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-renovacion-arda-guler-18-11-2026"
+},
+{
+ emoji:"🏆",
+ category:"جوائز | Awards",
+ ar:"لامين يامال وفليك وأردا غولر ضمن الفائزين بجوائز لا ليغا",
+ en:"Lamine Yamal, Flick and Arda Güler among LaLiga award winners",
+ descAr:"أعلنت رابطة لا ليغا أسماء الفائزين بجوائز موسم 2025-2026، ومن بينهم لامين يامال وهانسي فليك وأردا غولر.",
+ descEn:"LaLiga announced its 2025-26 award winners, including Lamine Yamal, Hansi Flick and Arda Güler.",
+ url:"https://www.laliga.com/en-GB/laliga-easports"
+},
+{
+ emoji:"🤝",
+ category:"كرة القدم والمجتمع | Football & Community",
+ ar:"لا ليغا تطلق أدوات جديدة لمكافحة التنمر",
+ en:"LaLiga steps up its fight against bullying",
+ descAr:"أعلنت لا ليغا عن أدوات جديدة للمساعدة في منع التنمر واكتشافه ومواجهته في كرة القدم القاعدية.",
+ descEn:"LaLiga announced new tools to help prevent, detect and tackle bullying in grassroots football.",
+ url:"https://www.laliga.com/en-GB/laliga-easports"
+},
+{
+ emoji:"📊",
+ category:"الدوري الإنجليزي | Fantasy Premier League",
+ ar:"أوبتا تكشف عن خمسة لاعبين قد يكونون مفاجأة الجولة",
+ en:"Opta highlights five potential surprise picks for Gameweek 11",
+ descAr:"استعرضت أوبتا خمسة خيارات قد تساعد مدربي فانتازي الدوري الإنجليزي في الجولة الحادية عشرة.",
+ descEn:"Opta has highlighted five under-the-radar players for Fantasy Premier League Gameweek 11.",
+ url:"https://theanalyst.com/articles/opta-best-fpl-picks-gameweek-11-2026-27"
+},
+{
+ emoji:"⚽",
+ category:"دوري أبطال أوروبا للسيدات | Women's Champions League",
+ ar:"مانشستر سيتي للسيدات يواجه هاكن اليوم",
+ en:"Manchester City Women face Häcken today",
+ descAr:"من مباريات دوري أبطال أوروبا للسيدات يوم 18 نوفمبر: هاكن أمام مانشستر سيتي.",
+ descEn:"One of the Women's Champions League fixtures on November 18 is Häcken against Manchester City.",
+ url:"https://www.theguardian.com/football/fixtures/2026/Nov/18"
+},
+{
+ emoji:"⚽",
+ category:"دوري أبطال أوروبا للسيدات | Women's Champions League",
+ ar:"ريال مدريد للسيدات يواجه إنتر",
+ en:"Real Madrid Women take on Inter",
+ descAr:"ريال مدريد للسيدات يلتقي إنتر ضمن مباريات دوري أبطال أوروبا للسيدات يوم 18 نوفمبر.",
+ descEn:"Real Madrid Women meet Inter in the Women's Champions League on November 18.",
+ url:"https://www.theguardian.com/football/fixtures/2026/Nov/18"
+},
+{
+ emoji:"⚽",
+ category:"دوري أبطال أوروبا للسيدات | Women's Champions League",
+ ar:"قمة بين تشيلسي وباريس سان جيرمان للسيدات",
+ en:"Chelsea Women face Paris Saint-Germain",
+ descAr:"تشيلسي يواجه باريس سان جيرمان في مباراة أوروبية للسيدات يوم 18 نوفمبر.",
+ descEn:"Chelsea take on Paris Saint-Germain in a Women's Champions League fixture on November 18.",
+ url:"https://www.theguardian.com/football/fixtures/2026/Nov/18"
+},
+{
+ emoji:"⚽",
+ category:"دوري أبطال أوروبا للسيدات | Women's Champions League",
+ ar:"يوفنتوس للسيدات يواجه لوفين",
+ en:"Juventus Women meet Leuven",
+ descAr:"يوفنتوس يواجه لوفين ضمن مباريات دوري أبطال أوروبا للسيدات يوم 18 نوفمبر.",
+ descEn:"Juventus face Leuven in the Women's Champions League on November 18.",
+ url:"https://www.theguardian.com/football/fixtures/2026/Nov/18"
+},
+{
+ emoji:"📅",
+ category:"مواعيد المباريات | Fixtures",
+ ar:"مباريات أوروبية مرتقبة يوم 19 نوفمبر",
+ en:"More European fixtures scheduled for November 19",
+ descAr:"تشمل مباريات الغد في دوري أبطال أوروبا للسيدات أرسنال أمام ليون وبرشلونة أمام سيرفيت.",
+ descEn:"Upcoming Women's Champions League fixtures include Arsenal vs OL Lyonnes and Barcelona vs Servette.",
+ url:"https://www.theguardian.com/football/fixtures/2026/Nov/18"
+}
+];
+
+let english = false;
+
+function renderNews(){
+ const container = document.getElementById("news");
+ container.innerHTML = articles.map(a => `
+  <article class="card">
+   <div class="emoji">${a.emoji}</div>
+   <div class="category">${a.category}</div>
+   <h2>${english ? a.en : a.ar}</h2>
+   <p>${english ? a.descEn : a.descAr}</p>
+   <a href="${a.url}" target="_blank" rel="noopener">
+    ${english ? "Read original source ↗" : "اقرأ المصدر الأصلي ↗"}
+   </a>
+  </article>
+ `).join("");
+}
+
+function toggleLanguage(){
+ english = !english;
+ document.documentElement.lang = english ? "en" : "ar";
+ document.documentElement.dir = english ? "ltr" : "rtl";
+ document.getElementById("langBtn").textContent = english ? "العربية" : "English";
+ document.getElementById("edition").textContent = english ? "Edition: November 18, 2026" : "نشرة 18 نوفمبر 2026";
+ document.getElementById("headline").textContent = english ? "All Football News in One Place" : "كل أخبار كرة القدم في مكان واحد";
+ document.getElementById("intro").textContent = english ? "Follow clubs, players and competitions from around the world with GoalSphere." : "تابع أخبار الأندية واللاعبين والبطولات العالمية من GoalSphere.";
+ document.getElementById("notice").textContent = english ? "📰 This is a sample edition dated November 18, 2026. Open the original source for each story." : "📰 هذه نشرة تجريبية بتاريخ 18 نوفمبر 2026. اضغط على «اقرأ المصدر» للوصول إلى الخبر الأصلي.";
+ renderNews();
+}
+renderNews();
+</script>
+</body>
+</html>
