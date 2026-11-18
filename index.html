@@ -2,6 +2,198 @@
 
 <!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GoalSphere | Football News</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#0b1220;color:white;font-family:Arial,sans-serif}
+
+header{background:#111d32;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+
+.logo{font-size:27px;font-weight:bold;color:#35e0a1}
+
+button{background:#35e0a1;border:0;padding:11px 18px;border-radius:8px;font-weight:bold;cursor:pointer}
+
+nav{padding:15px 6%;background:#16243b}
+
+nav a{color:white;text-decoration:none;margin-right:22px;font-size:14px}
+
+.hero{padding:45px 6%;background:linear-gradient(120deg,#123c38,#15233d)}
+
+.hero h1{font-size:36px;margin:0 0 10px}
+
+.hero p{color:#c5d5e4}
+
+main{padding:30px 6%;max-width:1200px;margin:auto}
+
+.section-title{border-left:4px solid #35e0a1;padding-left:12px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:25px}
+
+.card{background:#15243a;border-radius:14px;overflow:hidden;border:1px solid #263b58}
+
+.picture{height:170px;display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#174b48,#243d65)}
+
+.content{padding:20px}
+
+.tag{color:#35e0a1;font-size:12px;font-weight:bold}
+
+.card h2{font-size:20px;line-height:1.5}
+
+.card p{color:#c0cada;line-height:1.7;font-size:14px}
+
+.card a{color:#35e0a1;text-decoration:none;font-weight:bold}
+
+footer{text-align:center;padding:30px;color:#9aabc0;background:#111d32;margin-top:40px}
+
+body.ar{direction:rtl}
+
+body.ar .section-title{border-left:0;border-right:4px solid #35e0a1;padding-left:0;padding-right:12px}
+
+body.ar nav a{margin-right:0;margin-left:22px}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">⚽ GoalSphere</div>
+
+<button onclick="toggleLanguage()" id="languageButton">العربية</button>
+
+</header>
+
+<nav>
+
+<a href="#latest" id="navLatest">Latest News</a>
+
+<a href="#transfers" id="navTransfers">Transfers</a>
+
+<a href="#football" id="navFootball">Football</a>
+
+</nav>
+
+<section class="hero">
+
+<h1 id="heroTitle">The World of Football</h1>
+
+<p id="heroText">Your daily destination for football news from around the world.</p>
+
+</section>
+
+<main>
+
+<h2 class="section-title" id="latest">Latest News</h2>
+
+<div class="grid">
+
+<article class="card">
+
+<div class="picture">⚽</div>
+
+<div class="content">
+
+<div class="tag" id="tag1">MANCHESTER UNITED</div>
+
+<h2 id="title1">Pochettino arrives at Manchester United</h2>
+
+<p id="desc1">Mauricio Pochettino has arrived in Manchester to take charge of United as the club looks to turn around a difficult season.</p>
+
+<a href="https://www.reuters.com/sports/soccer/pochettino-arrives-manchester-braced-relegation-cauldron-2026-11-18/" target="_blank" id="link1">Read Source →</a>
+
+</div>
+
+</article>
+
+<article class="card">
+
+<div class="picture">🏆</div>
+
+<div class="content">
+
+<div class="tag" id="tag2">SOUTH AMERICAN FOOTBALL</div>
+
+<h2 id="title2">CONMEBOL and Mercado Libre renew partnership until 2030</h2>
+
+<p id="desc2">The renewed agreement will cover major South American club competitions from 2027 to 2030.</p>
+
+<a href="https://gol.conmebol.com/libertadores/en/news/mercado-libre-strengthens-its-commitment-south-american-football-renews-conmebol-sponsorship" target="_blank" id="link2">Read Source →</a>
+
+</div>
+
+</article>
+
+</div>
+
+</main>
+
+<footer>© 2026 GoalSphere. All rights reserved.</footer>
+
+<script>
+
+let arabic=false;
+
+function toggleLanguage(){
+
+arabic=!arabic;
+
+document.body.classList.toggle("ar",arabic);
+
+document.documentElement.lang=arabic?"ar":"en";
+
+document.getElementById("languageButton").textContent=arabic?"English":"العربية";
+
+document.getElementById("navLatest").textContent=arabic?"آخر الأخبار":"Latest News";
+
+document.getElementById("navTransfers").textContent=arabic?"الانتقالات":"Transfers";
+
+document.getElementById("navFootball").textContent=arabic?"كرة القدم":"Football";
+
+document.getElementById("heroTitle").textContent=arabic?"عالم كرة القدم":"The World of Football";
+
+document.getElementById("heroText").textContent=arabic?"وجهتك اليومية لأخبار كرة القدم من جميع أنحاء العالم":"Your daily destination for football news from around the world.";
+
+document.getElementById("latest").textContent=arabic?"آخر الأخبار":"Latest News";
+
+document.getElementById("tag1").textContent=arabic?"مانشستر يونايتد":"MANCHESTER UNITED";
+
+document.getElementById("title1").textContent=arabic?"بوكيتينو يصل إلى مانشستر يونايتد":"Pochettino arrives at Manchester United";
+
+document.getElementById("desc1").textContent=arabic?"وصل ماوريسيو بوكيتينو إلى مانشستر لتولي تدريب يونايتد، وسط سعي النادي للخروج من موسمه الصعب.":"Mauricio Pochettino has arrived in Manchester to take charge of United as the club looks to turn around a difficult season.";
+
+document.getElementById("link1").textContent=arabic?"اقرأ المصدر ←":"Read Source →";
+
+document.getElementById("tag2").textContent=arabic?"كرة القدم في أمريكا الجنوبية":"SOUTH AMERICAN FOOTBALL";
+
+document.getElementById("title2").textContent=arabic?"كونميبول وميركادو ليبره يجددان الشراكة حتى 2030":"CONMEBOL and Mercado Libre renew partnership until 2030";
+
+document.getElementById("desc2").textContent=arabic?"الاتفاق الجديد يشمل مسابقات الأندية الكبرى في أمريكا الجنوبية من 2027 إلى 2030.":"The renewed agreement will cover major South American club competitions from 2027 to 2030.";
+
+document.getElementById("link2").textContent=arabic?"اقرأ المصدر ←":"Read Source →";
+
+}
+
+</script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
 <head>
